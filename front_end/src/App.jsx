@@ -56,70 +56,119 @@ const router = createBrowserRouter([
     ),
   },
   { path: "/login", element: <Login /> },
-  { path: "/cree", element: <Consomateur /> },
-  { path: "/pageconsommateur", element: <IndexConsommateur /> },
-  { path: "/message", element: <Discution /> },
-  { path: "/AcceuilConso", element: <AcceuilConsommater /> },
+  {
+    path: "/cree",
+    element: (
+      // <ProtectedRoute>
+      <div>
+        <Consomateur />
+      </div>
+      // </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/pageconsommateur",
+    element: (
+      <ProtectedRoute>
+        <div>
+          <IndexConsommateur />
+        </div>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/message",
+    element: (
+      <ProtectedRoute>
+        <div>
+          <Discution />
+        </div>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/AcceuilConso",
+    element: (
+      <ProtectedRoute>
+        <div>
+          <AcceuilConsommater />
+        </div>
+      </ProtectedRoute>
+    ),
+  },
   {
     path: "/cree_super_utilisateur",
     element: (
-      <div>
-        {/* <Navbar /> */}
-        <SuperUtilisateur />
-      </div>
+      <ProtectedRoute>
+        <div>
+          <SuperUtilisateur />
+        </div>
+      </ProtectedRoute>
     ),
   },
   {
     path: "/liste_super_utilisateur",
     element: (
-      <div>
-        <Navbar />
-        <ListeUtilisateur />
-      </div>
+      <ProtectedRoute>
+        <div>
+          <Navbar />
+          <ListeUtilisateur />
+        </div>
+      </ProtectedRoute>
     ),
   },
   {
     path: "/users",
     element: (
-      <div>
-        <Navbar />
-        <UsersPage />
-      </div>
+      <ProtectedRoute>
+        <div>
+          <Navbar />
+          <UsersPage />
+        </div>
+      </ProtectedRoute>
     ),
   },
   {
     path: "/suivit",
     element: (
-      <div>
-        {/* <Navbar /> */}
-        <Suivi_achat />
-      </div>
+      <ProtectedRoute>
+        <div>
+          {/* <Navbar /> */}
+          <Suivi_achat />
+        </div>
+      </ProtectedRoute>
     ),
   },
   {
     path: "/Transaction",
     element: (
-      <div>
-        <Transaction />
-      </div>
+      <ProtectedRoute>
+        <div>
+          <Transaction />
+        </div>
+      </ProtectedRoute>
     ),
   },
   {
     path: "/réception",
     element: (
-      <div>
-        {/* <Navbar /> */}
-        <Reception />
-      </div>
+      <ProtectedRoute>
+        <div>
+          {/* <Navbar /> */}
+          <Reception />
+        </div>
+      </ProtectedRoute>
     ),
   },
   {
     path: "/utilisateur",
     element: (
-      <div>
-        {/* <Navbar /> */}
-        <AcceuilUtilisateur />
-      </div>
+      <ProtectedRoute>
+        <div>
+          {/* <Navbar /> */}
+          <AcceuilUtilisateur />
+        </div>
+      </ProtectedRoute>
     ),
   },
   AcceuilUtilisateur,

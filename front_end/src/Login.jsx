@@ -1,23 +1,29 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
 import api from "./../src/api/axios.js";
-// import axios from "axios";// ⚠️ bien utiliser ton fichier api.js
 
 export default function Login() {
   const { login } = useContext(AuthContext);
-  const [loginInput, setLoginInput] = useState(""); // peut être nom ou email
+  const [loginInput, setLoginInput] = useState(""); // nom ou email
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const res = await api.post("/login", {
-        email: loginInput, // envoyé au backend
+        email: loginInput,
         password,
       });
+
+      // Ici on sauvegarde tout l'objet user, y compris l'image
       login(res.data.user, res.data.token);
+
+      // Redirection automatique après connexion
+      navigate("/pageconsommateur");
     } catch (err) {
-      alert("Erreur login");
+      alert(err.response?.data?.message || "Erreur login");
     }
   };
 

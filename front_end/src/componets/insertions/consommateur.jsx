@@ -36,13 +36,13 @@ export function Consomateur() {
       const response = await axios.post(
         "http://127.0.0.1:8000/api/cree_super_utilisateurs",
         data,
+
         {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
-      // navigate("/liste_super_utilisateur", {
-      //   state: { message: response.data.message },
-      // });
+
+      navigate("/pageconsommateur");
       console.log("tonga");
     } catch (err) {
       console.error("Erreur :", err);
@@ -66,6 +66,7 @@ export function Consomateur() {
             <input
               type="text"
               name="nom"
+              required
               placeholder="Nom"
               value={formData.nom}
               onChange={handleChange}
@@ -74,6 +75,7 @@ export function Consomateur() {
             <input
               type="text"
               name="prenom"
+              required
               placeholder="Prénom"
               value={formData.prenom}
               onChange={handleChange}
@@ -82,6 +84,7 @@ export function Consomateur() {
             <input
               type="text"
               name="sexe"
+              required
               placeholder="Sexe"
               value={formData.sexe}
               onChange={handleChange}
@@ -90,6 +93,7 @@ export function Consomateur() {
             <input
               type="password"
               name="motDePasse"
+              required
               placeholder="Mot de passe"
               value={formData.motDePasse}
               onChange={handleChange}
@@ -98,6 +102,7 @@ export function Consomateur() {
             <input
               type="text"
               name="contact"
+              required
               placeholder="Contact"
               value={formData.contact}
               onChange={handleChange}
@@ -106,6 +111,7 @@ export function Consomateur() {
             <input
               type="text"
               name="email"
+              required
               onChange={handleChange}
               value={formData.email}
               placeholder="Email"
@@ -114,6 +120,7 @@ export function Consomateur() {
             <input
               type="file"
               name="profil"
+              required
               onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
             />
@@ -124,7 +131,7 @@ export function Consomateur() {
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
             >
               <option value="">Choisir un Groupe</option>
-              <option value="G1">Super Administrateur</option>
+              <option value="G1">Administrateur</option>
               <option value="G2">Utilisateur</option>
             </select>
           </div>

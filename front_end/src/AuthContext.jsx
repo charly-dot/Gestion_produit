@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = (userData, token) => {
     localStorage.setItem("token", token);
-    localStorage.setItem("user", JSON.stringify(userData));
+    localStorage.setItem("user", JSON.stringify(userData)); // sauvegarde l'utilisateur complet, y compris image
     setUser(userData);
   };
 
