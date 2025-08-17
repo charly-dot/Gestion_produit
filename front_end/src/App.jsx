@@ -5,10 +5,6 @@ import { AuthProvider } from "./AuthContext";
 import ProtectedRoute from "./ProtectedRoute";
 
 import { Navbar } from "./componets/navbar";
-import {
-  Authentication,
-  Creation_consommateur,
-} from "./componets/authentification";
 import { CreateSuperUser } from "./componets/create_super_admin";
 import { SuperUtilisateur } from "./componets/insertions/insertion_super_utilisater";
 import { ListeUtilisateur } from "./componets/affichage/liste_utilisateur";
