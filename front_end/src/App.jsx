@@ -6,7 +6,6 @@ import ProtectedRoute from "./ProtectedRoute";
 
 import { Navbar } from "./componets/navbar";
 import { CreateSuperUser } from "./componets/create_super_admin";
-import { SuperUtilisateur } from "./componets/insertions/insertion_super_utilisater";
 import { ListeUtilisateur } from "./componets/affichage/liste_utilisateur";
 import { Suivi_achat } from "./componets/affichage/pageConsommateur/suivi_achat";
 import { Acceuil } from "./componets/affichage/acceuil";
@@ -47,23 +46,18 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      // <ProtectedRoute>
       <div>
         <Acceuil />
       </div>
-
-      // </ProtectedRoute>
     ),
   },
   { path: "/login", element: <Login /> },
   {
     path: "/cree",
     element: (
-      // <ProtectedRoute>
       <div>
         <Consomateur />
       </div>
-      // </ProtectedRoute>
     ),
   },
   {
@@ -101,7 +95,7 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <div>
-          <SuperUtilisateur />
+          <Consomateur />
         </div>
       </ProtectedRoute>
     ),
@@ -112,7 +106,7 @@ const router = createBrowserRouter([
       <ProtectedRoute>
         <div>
           <Navbar />
-          <ListeUtilisateur />
+          <AcceuilConsommater />
         </div>
       </ProtectedRoute>
     ),

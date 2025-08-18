@@ -3,27 +3,27 @@ import { createContext, useState, useEffect } from "react";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [DonneSession, setDonneSession] = useState(null);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
-    if (storedUser) setUser(JSON.parse(storedUser));
+    if (storedUser) setDonneSession(JSON.parse(storedUser));
   }, []);
 
   const login = (userData, token) => {
     localStorage.setItem("token", token);
-    localStorage.setItem("user", JSON.stringify(userData)); // sauvegarde l'utilisateur complet, y compris image
-    setUser(userData);
+    localStorage.setItem("user", JSON.stringify(userData));
+    setDonneSession(userData);
   };
 
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    setUser(null);
+    setDonneSession(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ DonneSession, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
