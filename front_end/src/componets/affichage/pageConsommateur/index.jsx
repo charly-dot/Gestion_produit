@@ -175,92 +175,134 @@ export function IndexConsommateur() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-100 to-blue-300">
-      <div className="p-6">
-        <div className="bg-blue-600 flex justify-between items-center p-6 rounded-lg shadow-lg">
-          <input
-            type="text"
-            placeholder="Rechercher un produit..."
-            className="px-4 py-2 rounded border border-white focus:outline-none focus:ring-2 focus:ring-blue-300"
+      <div className="bg-blue-600 flex justify-between items-center p-2  shadow-lg">
+        <button
+          onClick={handleLogout}
+          className="px-3 py-1  ml-[7%] bg-red-500 text-white rounded"
+        >
+          Déconnexion
+        </button>
+
+        <a
+          href=""
+          onClick={() => navigate("/AcceuilConso")}
+          className="mr-[8%]"
+        >
+          <img
+            src={`http://localhost:8000/storage/${DonneSession.profil}`}
+            alt="Profil"
+            className="w-16  h-16 object-cover rounded-full border-4 border-white shadow-md"
           />
-          <button
-            onClick={handleLogout}
-            className="px-3 py-1 bg-red-500 text-white rounded"
-          >
-            Déconnexion
-          </button>
+        </a>
+      </div>
 
-          <a href="" onClick={() => navigate("/AcceuilConso")}>
-            <img
-              src={`http://localhost:8000/storage/${DonneSession.profil}`}
-              alt="Profil"
-              className="w-16 h-16 object-cover rounded-full border-4 border-white shadow-md"
-            />
-          </a>
-        </div>
-
+      <div className="p-6">
         <div className="max-w-6xl mx-auto mt-10 px-6">
-          <h1 className="text-center text-3xl font-bold text-blue-800 mb-6">
-            LISTE DES PRODUITS
-          </h1>
+          <div className="flex justify-between items-center mb-6">
+            <h1 className="text-center mb-6 text-3xl font-bold text-blue-800 ">
+              LISTE DES PRODUITS
+            </h1>
+            {/* <input
+              type="text"
+              placeholder="Rechercher un produit..."
+              className="px-4 py-2 rounded border border-white focus:outline-none focus:ring-2 focus:ring-blue-300"
+            /> */}
+            <div className=" focus:outline-none focus:ring-2 focus:ring-blue-300">
+              <form class="max-w-md mx-auto">
+                <div class="relative">
+                  <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg
+                      class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                      />
+                    </svg>
+                  </div>
+                  <input
+                    type="search"
+                    id="default-search"
+                    class="block w-full p-4 px-12 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
+                    placeholder="Search Mockups, Logos..."
+                    required
+                  />
+                  <button
+                    type="submit"
+                    class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                    Search
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
 
           <div className="w-full overflow-x-auto">
-        <div className="max-h-[90vh] overflow-y-auto border border-blue-300 rounded-lg shadow-md">
-          <table className="min-w-full border border-blue-300 text-left table-auto bg-blue-50 rounded-lg shadow-md">
-            <thead className="bg-blue-800 text-white">
-              <tr>
-                <th className="py-3 px-4 border border-blue-700 sticky top-0 bg-blue-800 z-20">
-                  Image
-                </th>
-                <th className="py-3 px-4 border border-blue-700 sticky top-0 bg-blue-800 z-20">
-                  Nom
-                </th>
-                <th className="py-3 px-4 border border-blue-700 sticky top-0 bg-blue-800 z-20">
-                  Description
-                </th>
-                <th className="py-3 px-4 border border-blue-700 sticky top-0 bg-blue-800 z-20">
-                  Zone
-                </th>
-                <th className="py-3 px-4 border border-blue-700 sticky top-0 bg-blue-800 z-20">
-                  Contact
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {produits.map((produit) => (
-                <tr
-                  key={produit.id}
-                  className="bg-blue-100 even:bg-blue-50 hover:bg-blue-200 transition-colors duration-200"
-                >
-                  <td className="py-2 px-4 border border-blue-300">
-                    <img
-                      src={produit.image}
-                      alt={produit.nom}
-                      className="w-20 h-20 object-cover rounded"
-                    />
-                  </td>
-                  <td className="py-2 px-4 border border-blue-300">
-                    {produit.nom}
-                  </td>
-                  <td className="py-2 px-4 border border-blue-300">
-                    {produit.description}
-                  </td>
-                  <td className="py-2 px-4 border border-blue-300">
-                    {produit.zone}
-                  </td>
-                  <td className="py-3 px-4 border border-blue-300 text-center">
-                    <button
-                      onClick={() => navigate("/message")}
-                      className="p-2 rounded-full bg-blue-100 hover:bg-blue-200 transition"
+            <div className="max-h-[90vh] overflow-y-auto border border-blue-300 rounded-lg shadow-md">
+              <table className="min-w-full border border-blue-300 text-left table-auto bg-blue-50 rounded-lg shadow-md">
+                <thead className="bg-blue-800 text-white">
+                  <tr>
+                    <th className="py-3 px-4 border border-blue-700 sticky top-0 bg-blue-800 z-20">
+                      Image
+                    </th>
+                    <th className="py-3 px-4 border border-blue-700 sticky top-0 bg-blue-800 z-20">
+                      Nom
+                    </th>
+                    <th className="py-3 px-4 border border-blue-700 sticky top-0 bg-blue-800 z-20">
+                      Description
+                    </th>
+                    <th className="py-3 px-4 border border-blue-700 sticky top-0 bg-blue-800 z-20">
+                      Zone
+                    </th>
+                    <th className="py-3 px-4 border border-blue-700 sticky top-0 bg-blue-800 z-20">
+                      Contact
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {produits.map((produit) => (
+                    <tr
+                      key={produit.id}
+                      className="bg-blue-100 even:bg-blue-50 hover:bg-blue-200 transition-colors duration-200"
                     >
-                      <FiMail className="w-8 h-8 text-blue-600" />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+                      <td className="py-2 px-4 border border-blue-300">
+                        <img
+                          src={produit.image}
+                          alt={produit.nom}
+                          className="w-20 h-20 object-cover rounded"
+                        />
+                      </td>
+                      <td className="py-2 px-4 border border-blue-300">
+                        {produit.nom}
+                      </td>
+                      <td className="py-2 px-4 border border-blue-300">
+                        {produit.description}
+                      </td>
+                      <td className="py-2 px-4 border border-blue-300">
+                        {produit.zone}
+                      </td>
+                      <td className="py-3 px-4 border border-blue-300 text-center">
+                        <button
+                          onClick={() => navigate("/message")}
+                          className="p-2 rounded-full bg-blue-100 hover:bg-blue-200 transition"
+                        >
+                          <FiMail className="w-8 h-8 text-blue-600" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>

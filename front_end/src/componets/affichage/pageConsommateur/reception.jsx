@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 export function Reception() {
+  const navigate = useNavigate();
   return (
     <div className="p-6 bg-gradient-to-br from-cyan-500 to-blue-600 min-h-screen ">
       <div className="bg-blue-600 flex justify-between items-center p-6 shadow-lg rounded-lg mb-6">
@@ -7,7 +10,7 @@ export function Reception() {
           href="#"
           onClick={(e) => {
             e.preventDefault();
-            navigate("/AcceuilConso");
+            Navigate("/AcceuilConso");
           }}
         >
           <img

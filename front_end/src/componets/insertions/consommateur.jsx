@@ -215,8 +215,9 @@ export function Consomateur() {
                            focus:outline-none focus:ring-2 focus:ring-cyan-400"
               >
                 <option value="">Sélectionnez</option>
-                <option value="G1">Administrateur</option>
-                <option value="G2">Utilisateur</option>
+                <option value="Consommateur">Consommateur</option>
+                <option value="fournisseur">fournisseur</option>
+                <option value="entité">entité</option>
               </select>
             </div>
           </div>

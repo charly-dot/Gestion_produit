@@ -166,59 +166,73 @@ export function Acceuil() {
         LISTE CATEGORIES
       </h1>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 rounded-lg">
-        <div className="text-center  transition">
+      <div
+        className="grid grid-cols-4 gap-4 sm:grid-cols-2 md:grid-cols-3 gap-6 rounded  "
+        style={{ paddingLeft: "20%", paddingRight: "20%" }}
+      >
+        <div className=" transition bg-white rounded  hover:shadow-2xl  object-cover  mx-auto transition-transform duration-300 ease-in-out hover:scale-15 hover:-translate-y-2 hover:shadow-4xl">
           <img
             src="/image/cousine.jfif"
             alt="Cuisine"
-            className="w-[70%] h-[70%] object-cover shadow-2xl rounded-lg mx-auto text-center transition-transform duration-300 ease-in-out hover:scale-15 hover:-translate-y-2 hover:shadow-4xl"
+            className="rounded h-[45%]"
           />
-          <p className="mt-2 text-gray-700 font-medium">Matériel Cuisine</p>
+          <p className="m-3 text-gray-700 font-medium">Label : XXXXXXX</p>
+          <p className="m-3 font-medium">Label : XXXXXXX</p>
+          <p className="m-3 font-medium">Label : XXXXXXX</p>
         </div>
 
-        <div className="text-center">
+        <div className="transition bg-white rounded  hover:shadow-2xl  object-cover  mx-auto transition-transform duration-300 ease-in-out hover:scale-15 hover:-translate-y-2 hover:shadow-4xl">
           <img
             src="/image/phone.jfif"
-            alt="Téléphone"
-            className="w-[70%] h-[70%] object-cover shadow-2xl rounded-lg mx-auto text-center transition-transform duration-300 ease-in-out hover:scale-15 hover:-translate-y-2 hover:shadow-4xl"
+            alt="Cuisine"
+            className="rounded h-[45%]"
           />
-          <p className="mt-2 text-gray-700 font-medium">Téléphones</p>
+          <p className="m-3 text-gray-700 font-medium">Label : XXXXXXX</p>
+          <p className="m-3 font-medium">Label : XXXXXXX</p>
+          <p className="m-3 font-medium">Label : XXXXXXX</p>
         </div>
 
-        <div className="text-center">
+        <div className=" transition bg-white rounded  hover:shadow-2xl  object-cover  mx-auto transition-transform duration-300 ease-in-out hover:scale-15 hover:-translate-y-2 hover:shadow-4xl">
           <img
             src="/image/lait).jfif"
-            alt="Lait"
-            // onClick={}
-            className="w-[70%] h-[70%] object-cover shadow-2xl rounded-lg mx-auto text-center transition-transform duration-300 ease-in-out hover:scale-15 hover:-translate-y-2 hover:shadow-4xl"
+            alt="Cuisine"
+            className="rounded h-[45%]"
           />
-          <p className="mt-2 text-gray-700 font-medium">Produits Laitiers</p>
+          <p className="m-3 text-gray-700 font-medium">Label : XXXXXXX</p>
+          <p className="m-3 font-medium">Label : XXXXXXX</p>
+          <p className="m-3 font-medium">Label : XXXXXXX</p>
         </div>
-        <div className="text-center">
+
+        <div className=" transition bg-white rounded  hover:shadow-2xl  object-cover  mx-auto transition-transform duration-300 ease-in-out hover:scale-15 hover:-translate-y-2 hover:shadow-4xl">
           <img
             src="/image/fleur.jfif"
-            alt="Fleurs"
-            className="w-[70%] h-[70%] object-cover shadow-2xl rounded-lg mx-auto text-center transition-transform duration-300 ease-in-out hover:scale-15 hover:-translate-y-2 hover:shadow-4xl"
+            alt="Cuisine"
+            className="rounded h-[45%]"
           />
-          <p className="mt-2 text-gray-700 font-medium">Fleurs</p>
+          <p className="m-3 text-gray-700 font-medium">Label : XXXXXXX</p>
+          <p className="m-3 font-medium">Label : XXXXXXX</p>
+          <p className="m-3 font-medium">Label : XXXXXXX</p>
         </div>
-
-        <div className="text-center">
+        <div className=" transition bg-white rounded  hover:shadow-2xl  object-cover  mx-auto transition-transform duration-300 ease-in-out hover:scale-15 hover:-translate-y-2 hover:shadow-4xl">
           <img
             src="/image/vetement.jfif"
-            alt="Vêtements"
-            className="w-[70%] h-[70%] object-cover shadow-2xl rounded-lg mx-auto text-center transition-transform duration-300 ease-in-out hover:scale-15 hover:-translate-y-2 hover:shadow-4xl"
+            alt="Cuisine"
+            className="rounded h-[45%]"
           />
-          <p className="mt-2 text-gray-700 font-medium">Vêtements</p>
+          <p className="m-3 text-gray-700 font-medium">Label : XXXXXXX</p>
+          <p className="m-3 font-medium">Label : XXXXXXX</p>
+          <p className="m-3 font-medium">Label : XXXXXXX</p>
         </div>
 
-        <div className="text-center">
+        <div className=" transition bg-white rounded  hover:shadow-2xl  object-cover  mx-auto transition-transform duration-300 ease-in-out hover:scale-15 hover:-translate-y-2 hover:shadow-4xl">
           <img
             src="/image/moto.jfif"
-            alt="Moto"
-            className="w-[70%] h-[70%] object-cover shadow-2xl rounded-lg mx-auto text-center transition-transform duration-300 ease-in-out hover:scale-15 hover:-translate-y-2 hover:shadow-4xl"
+            alt="Cuisine"
+            className="rounded h-[45%] w-full"
           />
-          <p className="mt-2 text-gray-700 font-medium">Motos</p>
+          <p className="m-3 text-gray-700 font-medium">Label : XXXXXXX</p>
+          <p className="m-3 font-medium">Label : XXXXXXX</p>
+          <p className="m-3 font-medium">Label : XXXXXXX</p>
         </div>
       </div>
 
@@ -226,7 +240,7 @@ export function Acceuil() {
         LISTE PRODUIT
       </h1>
 
-      <div className="w-full overflow-x-auto">
+      <div className="w-[90%] overflow-x-auto ml-[5%]">
         <div className="max-h-[90vh] overflow-y-auto border border-blue-300 rounded-lg shadow-md">
           <table className="min-w-full border border-blue-300 text-left table-auto bg-blue-50 rounded-lg shadow-md">
             <thead className="bg-blue-800 text-white">

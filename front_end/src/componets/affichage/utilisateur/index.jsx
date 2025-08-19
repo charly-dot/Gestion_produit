@@ -13,7 +13,7 @@ export function AcceuilUtilisateur() {
   const fetchUser = async () => {
     setLoading(true);
     try {
-      const response = await api.get(`/liste_utilisateur/${userId}`);
+      const response = await api.get(`/liste_utilisateur/${74}`);
       setUser(response.data);
     } catch (err) {
       setError("Erreur lors du chargement de l'utilisateur.");

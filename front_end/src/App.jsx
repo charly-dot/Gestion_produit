@@ -105,7 +105,7 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <div>
-          <Navbar />
+          {/* <Navbar /> */}
           <AcceuilConsommater />
         </div>
       </ProtectedRoute>
@@ -116,7 +116,7 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <div>
-          <Navbar />
+          {/* <Navbar /> */}
           <UsersPage />
         </div>
       </ProtectedRoute>
