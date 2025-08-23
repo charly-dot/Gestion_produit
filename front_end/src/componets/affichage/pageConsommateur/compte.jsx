@@ -16,11 +16,6 @@ export function AcceuilConsommater() {
 
   const userId = DonneSession?.id;
 
-  const handleLogout = () => {
-    logout();
-    navigate("/");
-  };
-
   const fetchUser = async () => {
     setLoading(true);
     try {
@@ -104,55 +99,32 @@ export function AcceuilConsommater() {
 
   return (
     <div>
-      <div className="bg-white flex justify-between items-center  shadow-lg">
-        <button
-          onClick={handleLogout}
-          className="px-3 py-1  ml-[7%] bg-red-500 text-white rounded"
-        >
-          Déconnexion
-        </button>
-
-        <a
-          href=""
-          onClick={() => navigate("/AcceuilConso")}
-          className="mr-[8%] p-1"
-        >
-          <img
-            src={`http://localhost:8000/storage/${DonneSession.profil}`}
-            alt="Profil"
-            className="w-16  h-16 object-cover rounded-full border-4 border-cyan-500 shadow-md"
-          />
-        </a>
-      </div>
-      <div className=" bg-cyan-500 min-h-screen flex flex-col items-center">
-        {/* Header */}
-
-        {/* Navigation */}
+      <div className="bg-gray-100 min-h-screen flex flex-col items-center">
         <div className="flex justify-center text-lg font-bold mb-6 gap-6">
           <a
             href=""
-            className="border border-cyan-500 border-b-cyan-100 text-white py-4 px-10"
+            className="border  border-gray-100  border-b-blue-500 text-blue-500 py-4 px-10"
             onClick={() => navigate("/liste_super_utilisateur")}
           >
             Utilisateurs
           </a>
           <a
             href=""
-            className="text-black/80 text-white py-4 px-10   hover:border  hover:border-cyan-500  hover:border-b-cyan-100"
+            className=" text-blue-500 py-4 px-10  hover:border  hover:border-gray-100  hover:border-b-blue-500"
             onClick={() => navigate("/suivit")}
           >
             Suivi achat
           </a>
           <a
             href=""
-            className="text-black/80 text-white py-4 px-10   hover:border  hover:border-cyan-500  hover:border-b-cyan-100"
+            className=" text-white py-4 px-10 text-blue-500  hover:border  hover:border-gray-100  hover:border-b-blue-500"
             onClick={() => navigate("/Transaction")}
           >
             Transaction
           </a>
           <a
             href=""
-            className="text-black/80 text-white py-4 px-10   hover:border  hover:border-cyan-500  hover:border-b-cyan-100"
+            className=" text-white py-4 px-10 text-blue-500  hover:border  hover:border-gray-100  hover:border-b-blue-500"
             onClick={() => navigate("/réception")}
           >
             Boîte de réception
@@ -201,24 +173,46 @@ export function AcceuilConsommater() {
               />
             </div>
 
-            <div className="bg-white p-6 rounded-xl max-w-lg mx-auto mt-4 text-left space-y-2 text-gray-700">
-              <p>
-                <strong>Nom:</strong> {user.nom}
+            <div className="bg-white  rounded-xl max-w-lg mx-auto ml-[20%] mt-4 text-left space-y-2 text-gray-700">
+              <p className="grid grid-cols-3 w-[90%]">
+                <div className="grid grid-cols-2 gap-[50%]">
+                  <strong>Nom</strong>:
+                </div>{" "}
+                {user.nom}
               </p>
-              <p>
-                <strong>Prénom:</strong> {user.prenom}
+
+              <p className="grid grid-cols-3 w-[90%]">
+                <div className="grid grid-cols-2 gap-[50%]">
+                  <strong>Prénom</strong>:
+                </div>{" "}
+                {user.prenom}
               </p>
-              <p>
-                <strong>Sexe:</strong> {user.sexe}
+
+              <p className="grid grid-cols-3 w-[90%]">
+                <div className="grid grid-cols-2 gap-[50%]">
+                  <strong>Sexe</strong>:
+                </div>{" "}
+                {user.sexe}
               </p>
-              <p>
-                <strong>Rôle:</strong> {user.role}
+
+              <p className="grid grid-cols-3 w-[90%]">
+                <div className="grid grid-cols-2 gap-[50%]">
+                  <strong>Rôle</strong>:
+                </div>{" "}
+                {user.role}
               </p>
-              <p>
-                <strong>Contact:</strong> {user.contact || "-"}
+
+              <p className="grid grid-cols-3 w-[90%]">
+                <div className="grid grid-cols-2 gap-[50%]">
+                  <strong>Contact</strong>:
+                </div>{" "}
+                {user.contact || "-"}
               </p>
-              <p>
-                <strong>Activation:</strong> {user.activation}
+              <p className="grid grid-cols-3 w-[90%]">
+                <div className="grid grid-cols-2 gap-[50%]">
+                  <strong>Email</strong>:
+                </div>{" "}
+                {user.email}
               </p>
             </div>
 
@@ -231,21 +225,21 @@ export function AcceuilConsommater() {
                     : "bg-green-500 hover:bg-green-600"
                 }`}
               >
-                {user.activation === "activer" ? "Désactiver" : "Activer"}
+                {user.activation === "activer" ? "DESACTIVER" : "ACTIVER"}
               </button>
 
               <button
                 onClick={handleEdit}
                 className="px-5 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 text-white font-semibold shadow-lg transition transform hover:-translate-y-1 hover:scale-105"
               >
-                Modifier
+                MODIFIER
               </button>
 
               <button
                 onClick={handleDelete}
                 className="px-5 py-2 rounded-lg bg-red-500 hover:bg-red-600 text-white font-semibold shadow-lg transition transform hover:-translate-y-1 hover:scale-105"
               >
-                Supprimer
+                SUPPRIMER
               </button>
             </div>
           </div>
@@ -260,80 +254,165 @@ export function AcceuilConsommater() {
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
             <form
               onSubmit={handleEditSubmit}
-              className="bg-white p-8 rounded-2xl w-full max-w-lg space-y-4 shadow-2xl"
+              className="bg-white p-8 rounded-2xl w-full max-w-lg space-y-6 shadow-2xl"
             >
-              <h2 className="text-2xl font-bold text-center text-cyan-600">
-                Modifier utilisateur
+              <h2 className="text-2xl font-bold text-center text-blue-500 mb-4">
+                MODIFICATION
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+              {/* NOM */}
+              <div className="flex items-center gap-4">
+                <label
+                  htmlFor="nom"
+                  className="w-32 text-left font-medium text-gray-700"
+                >
+                  Nom :
+                </label>
                 <input
+                  id="nom"
                   type="text"
                   value={editUser.nom}
                   onChange={(e) =>
                     setEditUser({ ...editUser, nom: e.target.value })
                   }
                   placeholder="Nom"
-                  className="input"
+                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg 
+                 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                 />
+              </div>
+
+              {/* PRENOM */}
+              <div className="flex items-center gap-4">
+                <label
+                  htmlFor="prenom"
+                  className="w-32 text-left font-medium text-gray-700"
+                >
+                  Prénom :
+                </label>
                 <input
+                  id="prenom"
                   type="text"
                   value={editUser.prenom}
                   onChange={(e) =>
                     setEditUser({ ...editUser, prenom: e.target.value })
                   }
                   placeholder="Prénom"
-                  className="input"
+                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg 
+                 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                 />
-                <input
+              </div>
+
+              {/* SEXE */}
+
+              <div className="flex items-center gap-4">
+                <label
+                  htmlFor="sexe"
+                  className="w-32 text-left font-medium text-gray-700"
+                >
+                  Sexe :
+                </label>
+
+                <select
+                  value={editUser.sexe}
+                  onChange={(e) =>
+                    setEditUser({ ...editUser, sexe: e.target.value })
+                  }
+                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg 
+                 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                >
+                  <option value="stock">HOMME</option>
+                  <option value="flotte">FEMME</option>
+                </select>
+
+                {/* <input
+                  id="sexe"
                   type="text"
                   value={editUser.sexe}
                   onChange={(e) =>
                     setEditUser({ ...editUser, sexe: e.target.value })
                   }
                   placeholder="Sexe"
-                  className="input"
-                />
-                <input
-                  type="text"
+                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg 
+                 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                /> */}
+              </div>
+
+              {/* ROLE */}
+              <div className="flex items-center gap-4">
+                <label
+                  htmlFor="role"
+                  className="w-32 text-left font-medium text-gray-700"
+                >
+                  Rôle :
+                </label>
+                <select
                   value={editUser.role}
                   onChange={(e) =>
                     setEditUser({ ...editUser, role: e.target.value })
                   }
-                  placeholder="Rôle"
-                  className="input"
-                />
+                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg 
+                 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                >
+                  <option value="stock">CONSOMMATEUR</option>
+                </select>
+              </div>
+
+              {/* EMAIL */}
+              <div className="flex items-center gap-4">
+                <label
+                  htmlFor="email"
+                  className="w-32 text-left font-medium text-gray-700"
+                >
+                  Email :
+                </label>
                 <input
+                  id="email"
                   type="email"
                   value={editUser.email || ""}
                   onChange={(e) =>
                     setEditUser({ ...editUser, email: e.target.value })
                   }
                   placeholder="Email"
-                  className="input"
+                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg 
+                 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                 />
+              </div>
+
+              {/* CONTACT */}
+              <div className="flex items-center gap-4">
+                <label
+                  htmlFor="contact"
+                  className="w-32 text-feft font-medium text-gray-700"
+                >
+                  Contact :
+                </label>
                 <input
+                  id="contact"
                   type="text"
                   value={editUser.contact || ""}
                   onChange={(e) =>
                     setEditUser({ ...editUser, contact: e.target.value })
                   }
                   placeholder="Contact"
-                  className="input"
+                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg 
+                 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                 />
               </div>
-              <div className="flex justify-end gap-3">
+
+              {/* BUTTONS */}
+              <div className="flex justify-end gap-3 mt-6">
                 <button
                   type="button"
                   onClick={() => setEditUser(null)}
-                  className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded-lg"
+                  className="bg-red-400 hover:bg-red-500 text-white px-4 py-2 rounded-lg shadow-md"
                 >
-                  Annuler
+                  ANNULER
                 </button>
                 <button
                   type="submit"
-                  className="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg"
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md"
                 >
-                  Modifier
+                  VALIDER
                 </button>
               </div>
             </form>

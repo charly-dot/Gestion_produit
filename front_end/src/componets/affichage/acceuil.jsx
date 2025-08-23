@@ -161,104 +161,256 @@ export function Acceuil() {
   ];
 
   return (
-    <div className="container-fluid mx-auto p-6 bg-cyan-500">
-      <h1 className="text-center text-3xl text-gray-700 font-medium mb-4 underline">
-        LISTE CATEGORIES
+    <div className="container-fluid mx-auto bg-gray-100">
+      <div className="relative h-[70vh] w-full bg-gray-100 z-20">
+        {/* Image de fond floue */}
+        <div
+          className="absolute top-0 left-0 h-full w-full"
+          style={{
+            backgroundImage:
+              "url('/image/woman-shopping-legumes-au-supermarche.jpg')",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            filter: "blur(2px)",
+            zIndex: -2,
+          }}
+        ></div>
+
+        {/* Overlay sombre */}
+        <div className="absolute top-0 left-0 h-full w-full bg-black/50 z-[-1]"></div>
+
+        {/* Contenu centré */}
+        <div className="relative z-10 flex flex-col justify-center items-center h-full text-center gap-5 text-white">
+          <h1 className="text-5xl font-bold drop-shadow-lg">Lorem Ipsum</h1>
+          <h3 className="text-xl max-w-2xl leading-relaxed drop-shadow-lg">
+            Le Lorem Ipsum est simplement du faux texte utilisé dans la
+            composition et la mise en page avant impression.
+          </h3>
+          <button className="mt-4 px-6 py-3 bg-yellow-500 text-black font-semibold rounded hover:bg-yellow-600 transition">
+            VOIR LES PRODUITS
+          </button>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <h1 className="text-center text-3xl text-blue-500 font-bold mb-4">
+        LES CATEGORIES
       </h1>
+      <br />
+      <br />
 
       <div
         className="grid grid-cols-4 gap-4 sm:grid-cols-2 md:grid-cols-3 gap-6 rounded  "
         style={{ paddingLeft: "20%", paddingRight: "20%" }}
       >
-        <div className=" transition bg-white rounded  hover:shadow-2xl  object-cover  mx-auto transition-transform duration-300 ease-in-out hover:scale-15 hover:-translate-y-2 hover:shadow-4xl">
-          <img
-            src="/image/cousine.jfif"
-            alt="Cuisine"
-            className="rounded h-[45%]"
-          />
-          <p className="m-3 text-gray-700 font-medium">Label : XXXXXXX</p>
-          <p className="m-3 font-medium">Label : XXXXXXX</p>
-          <p className="m-3 font-medium">Label : XXXXXXX</p>
+        <div>
+          <div
+            className="w-full bg-white rounded-xl p-1 mx-auto
+              transition-transform duration-300 ease-in-out
+              hover:scale-105 hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <img
+              src="/image/cousine.jfif"
+              alt="Cuisine"
+              className="rounded-lg h-[27vh] w-full object-cover" // fix height
+            />
+            <div></div>
+            <p className="mt-3 text-black font-bold">
+              Lorem Ipsum is placeholder text
+            </p>
+
+            <div className="mt-2 flex items-center gap-[12vh]">
+              <p className="font-medium text-yellow-500 truncate max-w-[60%]">
+                #commodo
+              </p>
+              <a
+                className="px-4 py-1 bg-blue-500 text-white font-medium rounded-lg hover:bg-green-600 transition-colors duration-300 whitespace-nowrap"
+                href="#"
+              >
+                Details
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div className="transition bg-white rounded  hover:shadow-2xl  object-cover  mx-auto transition-transform duration-300 ease-in-out hover:scale-15 hover:-translate-y-2 hover:shadow-4xl">
-          <img
-            src="/image/phone.jfif"
-            alt="Cuisine"
-            className="rounded h-[45%]"
-          />
-          <p className="m-3 text-gray-700 font-medium">Label : XXXXXXX</p>
-          <p className="m-3 font-medium">Label : XXXXXXX</p>
-          <p className="m-3 font-medium">Label : XXXXXXX</p>
+        <div>
+          <div
+            className="w-full bg-white rounded-xl p-1 mx-auto
+              transition-transform duration-300 ease-in-out
+              hover:scale-105 hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <img
+              src="/image/phone.jfif"
+              alt="Cuisine"
+              className="rounded-lg h-[27vh] w-full object-cover" // fix height
+            />
+            <div></div>
+            <p className="mt-3 text-black font-bold">
+              Lorem Ipsum is placeholder text
+            </p>
+
+            <div className="mt-2 flex items-center gap-[12vh]">
+              <p className="font-medium text-yellow-500 truncate max-w-[60%]">
+                #commodo
+              </p>
+              <a
+                className="px-4 py-1 bg-blue-500 text-white font-medium rounded-lg hover:bg-green-600 transition-colors duration-300 whitespace-nowrap"
+                href="#"
+              >
+                Details
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div className=" transition bg-white rounded  hover:shadow-2xl  object-cover  mx-auto transition-transform duration-300 ease-in-out hover:scale-15 hover:-translate-y-2 hover:shadow-4xl">
-          <img
-            src="/image/lait).jfif"
-            alt="Cuisine"
-            className="rounded h-[45%]"
-          />
-          <p className="m-3 text-gray-700 font-medium">Label : XXXXXXX</p>
-          <p className="m-3 font-medium">Label : XXXXXXX</p>
-          <p className="m-3 font-medium">Label : XXXXXXX</p>
+        <div>
+          <div
+            className="w-full bg-white rounded-xl p-1 mx-auto
+              transition-transform duration-300 ease-in-out
+              hover:scale-105 hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <img
+              src="/image/lait).jfif"
+              alt="Cuisine"
+              className="rounded-lg h-[27vh] w-full object-cover" // fix height
+            />
+            <div></div>
+            <p className="mt-3 text-black font-bold">
+              Lorem Ipsum is placeholder text
+            </p>
+
+            <div className="mt-2 flex items-center gap-[12vh]">
+              <p className="font-medium text-yellow-500 truncate max-w-[60%]">
+                #commodo
+              </p>
+              <a
+                className="px-4 py-1 bg-blue-500 text-white font-medium rounded-lg hover:bg-green-600 transition-colors duration-300 whitespace-nowrap"
+                href="#"
+              >
+                Details
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div className=" transition bg-white rounded  hover:shadow-2xl  object-cover  mx-auto transition-transform duration-300 ease-in-out hover:scale-15 hover:-translate-y-2 hover:shadow-4xl">
-          <img
-            src="/image/fleur.jfif"
-            alt="Cuisine"
-            className="rounded h-[45%]"
-          />
-          <p className="m-3 text-gray-700 font-medium">Label : XXXXXXX</p>
-          <p className="m-3 font-medium">Label : XXXXXXX</p>
-          <p className="m-3 font-medium">Label : XXXXXXX</p>
-        </div>
-        <div className=" transition bg-white rounded  hover:shadow-2xl  object-cover  mx-auto transition-transform duration-300 ease-in-out hover:scale-15 hover:-translate-y-2 hover:shadow-4xl">
-          <img
-            src="/image/vetement.jfif"
-            alt="Cuisine"
-            className="rounded h-[45%]"
-          />
-          <p className="m-3 text-gray-700 font-medium">Label : XXXXXXX</p>
-          <p className="m-3 font-medium">Label : XXXXXXX</p>
-          <p className="m-3 font-medium">Label : XXXXXXX</p>
+        <div>
+          <div
+            className="w-full bg-white rounded-xl p-1 mx-auto
+              transition-transform duration-300 ease-in-out
+              hover:scale-105 hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <img
+              src="/image/fleur.jfif"
+              alt="Cuisine"
+              className="rounded-lg h-[27vh] w-full object-cover" // fix height
+            />
+            <div></div>
+            <p className="mt-3 text-black font-bold">
+              Lorem Ipsum is placeholder text
+            </p>
+
+            <div className="mt-2 flex items-center gap-[12vh]">
+              <p className="font-medium text-yellow-500 truncate max-w-[60%]">
+                #commodo
+              </p>
+              <a
+                className="px-4 py-1 bg-blue-500 text-white font-medium rounded-lg hover:bg-green-600 transition-colors duration-300 whitespace-nowrap"
+                href="#"
+              >
+                Details
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div className=" transition bg-white rounded  hover:shadow-2xl  object-cover  mx-auto transition-transform duration-300 ease-in-out hover:scale-15 hover:-translate-y-2 hover:shadow-4xl">
-          <img
-            src="/image/moto.jfif"
-            alt="Cuisine"
-            className="rounded h-[45%] w-full"
-          />
-          <p className="m-3 text-gray-700 font-medium">Label : XXXXXXX</p>
-          <p className="m-3 font-medium">Label : XXXXXXX</p>
-          <p className="m-3 font-medium">Label : XXXXXXX</p>
+        <div>
+          <div
+            className="w-full bg-white rounded-xl p-1 mx-auto
+              transition-transform duration-300 ease-in-out
+              hover:scale-105 hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <img
+              src="/image/vetement.jfif"
+              alt="Cuisine"
+              className="rounded-lg h-[27vh] w-full object-cover" // fix height
+            />
+            <div></div>
+            <p className="mt-3 text-black font-bold">
+              Lorem Ipsum is placeholder text
+            </p>
+
+            <div className="mt-2 flex items-center gap-[12vh]">
+              <p className="font-medium text-yellow-500 truncate max-w-[60%]">
+                #commodo
+              </p>
+              <a
+                className="px-4 py-1 bg-blue-500 text-white font-medium rounded-lg hover:bg-green-600 transition-colors duration-300 whitespace-nowrap"
+                href="#"
+              >
+                Details
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div
+            className="w-full bg-white rounded-xl p-1 mx-auto
+              transition-transform duration-300 ease-in-out
+              hover:scale-105 hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <img
+              src="/image/moto.jfif"
+              alt="Cuisine"
+              className="rounded-lg h-[27vh] w-full object-cover" // fix height
+            />
+            <div></div>
+            <p className="mt-3 text-black font-bold">
+              Lorem Ipsum is placeholder text
+            </p>
+
+            <div className="mt-2 flex items-center gap-[12vh]">
+              <p className="font-medium text-yellow-500 truncate max-w-[60%]">
+                #commodo
+              </p>
+              <a
+                className="px-4 py-1 bg-blue-500 text-white font-medium rounded-lg hover:bg-green-600 transition-colors duration-300 whitespace-nowrap"
+                href="#"
+              >
+                Details
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-
-      <h1 className="text-center text-3xl text-gray-700 font-medium mb-4 underline">
-        LISTE PRODUIT
+      <br />
+      <br />
+      <br />
+      <br />
+      <h1 className="text-center text-3xl text-blue-500 font-bold mb-4">
+        PRODUITS DISPONIBLES
       </h1>
 
+      <br />
+      <br />
       <div className="w-[90%] overflow-x-auto ml-[5%]">
-        <div className="max-h-[90vh] overflow-y-auto border border-blue-300 rounded-lg shadow-md">
-          <table className="min-w-full border border-blue-300 text-left table-auto bg-blue-50 rounded-lg shadow-md">
-            <thead className="bg-blue-800 text-white">
-              <tr>
-                <th className="py-3 px-4 border border-blue-700 sticky top-0 bg-blue-800 z-20">
-                  Image
+        <div className="max-h-[70vh] overflow-y-auto rounded-lg shadow-md">
+          <table className="min-w-full  text-left table-auto bg-white rounded-lg shadow-md">
+            <thead>
+              <tr className=" bg-white z-20 border-b border-gray-300">
+                <th className="py-3 px-4  sticky top-0 bg-white z-20 border-b border-gray-300 ">
+                  IMAGE
                 </th>
-                <th className="py-3 px-4 border border-blue-700 sticky top-0 bg-blue-800 z-20">
-                  Nom
+                <th className="py-3 px-4  sticky top-0 bg-white z-20">NOM</th>
+                <th className="py-3 px-4  sticky top-0 bg-white z-20">
+                  DESCRIPTION
                 </th>
-                <th className="py-3 px-4 border border-blue-700 sticky top-0 bg-blue-800 z-20">
-                  Description
-                </th>
-                <th className="py-3 px-4 border border-blue-700 sticky top-0 bg-blue-800 z-20">
-                  Zone
-                </th>
-                <th className="py-3 px-4 border border-blue-700 sticky top-0 bg-blue-800 z-20">
-                  Contact
+                <th className="py-3 px-4  sticky top-0 bg-white z-20">ZONE</th>
+                <th className="py-3 px-4  sticky top-0 bg-white z-20">
+                  CONTACT
                 </th>
               </tr>
             </thead>
@@ -266,25 +418,25 @@ export function Acceuil() {
               {produits.map((produit) => (
                 <tr
                   key={produit.id}
-                  className="bg-blue-100 even:bg-blue-50 hover:bg-blue-200 transition-colors duration-200"
+                  className="bg-white  hover:bg-[#a2def6a1] transition-colors duration-200"
                 >
-                  <td className="py-2 px-4 border border-blue-300">
+                  <td className="py-2 px-4 border-b border-gray-300">
                     <img
                       src={produit.image}
                       alt={produit.nom}
                       className="w-20 h-20 object-cover rounded"
                     />
                   </td>
-                  <td className="py-2 px-4 border border-blue-300">
+                  <td className="py-2 px-4 border-b border-b-gray-300">
                     {produit.nom}
                   </td>
-                  <td className="py-2 px-4 border border-blue-300">
+                  <td className="py-2 px-4 border-b border-b-gray-300">
                     {produit.description}
                   </td>
-                  <td className="py-2 px-4 border border-blue-300">
+                  <td className="py-2 px-4 border-b border-b-gray-300">
                     {produit.zone}
                   </td>
-                  <td className="py-3 px-4 border border-blue-300 text-center">
+                  <td className="py-2 px-4 border-b border-b-gray-300">
                     <button
                       onClick={() => navigate("/message")}
                       className="p-2 rounded-full bg-blue-100 hover:bg-blue-200 transition"
@@ -298,23 +450,29 @@ export function Acceuil() {
           </table>
         </div>
       </div>
-
+      <br />
+      <br />
       <div className="flex flex-col sm:flex-row gap-4 sm:gap-6   w-full max-w-sm mx-auto mt-6">
         <a
           className=" text-center flex-1 px-6 py-3 bg-red-500 text-white font-medium rounded-lg hover:bg-red-600 transition-colors duration-300"
           href=""
           onClick={() => navigate("/login")}
         >
-          Connexion
+          CONNECTER
         </a>
         <a
           className=" text-center flex-1 px-6 py-3 bg-green-500 text-white font-medium rounded-lg hover:bg-green-600 transition-colors duration-300"
           href=""
           onClick={() => navigate("/cree")}
         >
-          Crée
+          CREER COMPTE
         </a>
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <div></div>
     </div>
   );
 }

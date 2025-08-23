@@ -1,9 +1,7 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
-
-
 
 export function Transaction() {
   const navigate = useNavigate();
@@ -12,14 +10,14 @@ export function Transaction() {
   const [factultatif, setfactultatif] = useState(true);
   const [table, setTable] = useState(true);
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
-    { field: "date", headerName: "Date", width: 150 },
-    { field: "compte", headerName: "Compte", width: 150 },
-    { field: "fournisseur", headerName: "Fournisseur", width: 150 },
-    { field: "montantHT", headerName: "Montant HT", width: 150 },
-    { field: "montantTTC", headerName: "Montant TTC", width: 150 },
+    { field: "id", headerName: "N°", width: 90 },
+    { field: "date", headerName: "DATE", width: 200 },
+    { field: "compte", headerName: "COMPTE", width: 200 },
+    { field: "fournisseur", headerName: "FOURNISSEUR", width: 300 },
+    { field: "montantHT", headerName: "MONTANT HT", width: 200 },
+    { field: "montantTTC", headerName: "MONTANT TTC", width: 220 },
   ];
-  
+
   const rows = [
     {
       id: 1,
@@ -38,55 +36,47 @@ export function Transaction() {
       montantTTC: 600,
     },
   ];
+  const totals = useMemo(() => {
+    return rows.reduce(
+      (acc, row) => {
+        acc.ht += row.montantHT;
+        acc.ttc += row.montantTTC;
+        return acc;
+      },
+      { ht: 0, ttc: 0 }
+    );
+  }, [rows]);
   return (
     <div>
-      <div>
-        <div className="bg-blue-600 flex justify-between items-center p-6 shadow-lg ">
-          <p></p>
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              navigate("/AcceuilConso");
-            }}
-          >
-            <img
-              src="/image/telephone.jfif"
-              alt="Profil"
-              className="w-16 h-16 object-cover rounded-full border-4 border-white shadow-md"
-            />
-          </a>
-        </div>
-      </div>
-      <div className="p-6 bg-cyan-500 min-h-screen">
+      <div className="p-6 bg-gray-100 min-h-screen">
         {/* Header */}
 
         {/* Navbar centrée */}
-        <div className="flex justify-center text-lg font-bold mb-6">
+        <div className="flex justify-center text-lg font-bold mb-6 gap-6">
           <a
             href=""
-            className="border-2 border-gray-800  text-black/80 bg-white py-4 px-10 rounded-l-lg hover:text-cyan-500"
+            className="ttext-blue-500 py-4 px-10 text-blue-500  hover:border  hover:border-gray-100  hover:border-b-blue-500"
             onClick={() => navigate("/liste_super_utilisateur")}
           >
             Utilisateurs
           </a>
           <a
             href=""
-            className="text-black/80 border-2 border-gray-800 bg-white py-4 px-10 hover:text-cyan-500"
+            className="  py-4 px-10 text-blue-500  hover:border  hover:border-gray-100  hover:border-b-blue-500"
             onClick={() => navigate("/suivit")}
           >
             Suivi achat
           </a>
           <a
             href=""
-            className="text-cyan-600 border-2 border-gray-800 bg-white py-4 px-10 hover:text-cyan-500"
+            className="border  border-gray-100  border-b-blue-500 text-blue-500 py-4 px-10"
             onClick={() => navigate("/Transaction")}
           >
             Transaction
           </a>
           <a
             href=""
-            className="text-black/80 border-2 border-gray-800 bg-white py-4 px-10 hover:text-cyan-500 rounded-r-lg"
+            className="  py-4 px-10 text-blue-500  hover:border  hover:border-gray-100  hover:border-b-blue-500"
             onClick={() => navigate("/réception")}
           >
             Boîte de réception
@@ -185,77 +175,34 @@ export function Transaction() {
                 </button>
               </div>
             )}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden p-4">
+              <Box
+                sx={{
+                  height: 400,
+                  width: "100%",
+                }}
+              >
+                <DataGrid
+                  rows={rows}
+                  columns={columns}
+                  pageSize={5}
+                  rowsPerPageOptions={[5, 10, 20]}
+                  checkboxSelection
+                  disableRowSelectionOnClick
+                />
+              </Box>
 
-            <Box sx={{ height: 520, width: "100%" }}>
-              <DataGrid
-                rows={rows}
-                columns={columns}
-                pageSize={5}
-                rowsPerPageOptions={[5, 10, 20]}
-                checkboxSelection
-                disableRowSelectionOnClick
-              />
-            </Box>
-
-            {/* Tableau */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <table className="w-full text-left border-collapse">
-                <thead className="bg-cyan-100 text-gray-700 uppercase text-sm">
-                  <tr>
-                    <th className="py-3 px-4 border-b">Dates</th>
-                    <th className="py-3 px-4 border-b">Comptes</th>
-                    <th className="py-3 px-4 border-b">Fournisseur</th>
-                    <th className="py-3 px-4 border-b">Ref</th>
-                    <th className="py-3 px-4 border-b">Montant HT</th>
-                    <th className="py-3 px-4 border-b">Montant TTC</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200">
-                  <tr
-                    className="hover:bg-cyan-50 transition-colors cursor-pointer"
-                    onClick={() => setShow(!show)}
-                  >
-                    <td className="py-3 px-4 font-medium">LKHIK</td>
-                    <td className="py-3 px-4">LNKL</td>
-                    <td className="py-3 px-4">/N.LNKJK</td>
-                    <td className="py-3 px-4 text-green-600 font-semibold">
-                      MJPKJILJ
-                    </td>
-                    <td className="py-3 px-4">/N.LNKJK</td>
-                    <td className="py-3 px-4 text-green-600 font-semibold">
-                      MJPKJILJ
-                    </td>
-                  </tr>
-                  <tr className="hover:bg-cyan-50 transition-colors">
-                    <td className="py-3 px-4 font-medium"></td>
-                    <td className="py-3 px-4"></td>
-                    <td className="py-3 text-2xl font-blond px-4">TOTAL </td>
-                    <td className="py-3 px-4"> </td>
-                    <td className="py-3 px-4 text-yellow-600 font-semibold">
-                      600
-                    </td>
-                    <td className="py-3 px-4 text-yellow-600 font-semibold">
-                      600
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              {croissant ? (
-                <button
-                  className="px-8 py-2 font-semibold mt-6 border bg-cyan-100 text-gray-700 uppercase border-gray-300 rounded-xl shadow-sm m-3"
-                  onClick={() => setCroissant(false)}
-                >
-                  Croissante
-                </button>
-              ) : (
-                <button
-                  className="px-8 py-2 font-semibold mt-6 border bg-cyan-100 text-gray-700 uppercase border-gray-300 rounded-xl shadow-sm m-3"
-                  onClick={() => setCroissant(true)}
-                >
-                  Décroissante
-                </button>
-              )}
+              {/* ✅ Ligne de total en dessous */}
+              <div className="flex justify-end mt-4 border-t pt-2 text-lg font-semibold">
+                <span className="mr-10 text-yellow-600">
+                  Total HT : {totals.ht}
+                </span>
+                <span className="text-yellow-600">
+                  Total TTC : {totals.ttc}
+                </span>
+              </div>
             </div>
+
             {show && (
               <div className="mt-6 bg-cyan-300 p-6 rounded-lg shadow-lg w-[40%]">
                 <h3 className="text-white text-2xl font-semibold mb-4">
@@ -274,7 +221,6 @@ export function Transaction() {
                 </div>
               </div>
             )}
-
             <div className="mb-6 flex justify-center ">
               <button className="px-8 py-2 font-semibold mt-6 border bg-cyan-100 text-gray-700 uppercase text-smborder-gray-300 rounded-xl shadow-sm ">
                 Affiche
@@ -283,7 +229,7 @@ export function Transaction() {
           </div>
         ) : (
           <div>
-            <h1 className="text-2xl text-center font-bold underline mb-6 text-gray-800">
+            <h1 className="text-2xl text-center font-bold underline mb-6 text-gray-700">
               CREATION DE TRANSACTION
             </h1>
 
@@ -291,7 +237,7 @@ export function Transaction() {
               {/* Compte */}
               <div className="flex items-center gap-4">
                 <label className="w-32 text-gray-700 font-medium">
-                  Compte :
+                  COMPTE :
                 </label>
                 <input
                   type="text"
@@ -303,7 +249,7 @@ export function Transaction() {
               {/* Fournisseur */}
               <div className="flex items-center gap-4">
                 <label className="w-32 text-gray-700 font-medium">
-                  Fournisseur :
+                  FOURNISSEUR :
                 </label>
                 <select className="flex-1 px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-cyan-300">
                   <option>Fournisseur 1</option>
@@ -316,7 +262,7 @@ export function Transaction() {
                 {/* Montant HT */}
                 <div className="flex flex-col">
                   <label className="text-gray-700 font-medium mb-1">
-                    Montant HT :
+                    MONTANT HT :
                   </label>
                   <div className="relative">
                     <input
@@ -333,7 +279,7 @@ export function Transaction() {
                 {/* Montant TTC */}
                 <div className="flex flex-col">
                   <label className="text-gray-700 font-medium mb-1">
-                    Montant TTC :
+                    MONTANT TTC :
                   </label>
                   <div className="relative">
                     <input
@@ -367,8 +313,6 @@ export function Transaction() {
             </form>
           </div>
         )}
-
-        {/* Section DOCUMENTS affichée si show == true */}
       </div>
     </div>
   );

@@ -54,28 +54,31 @@ export function Consomateur() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-cyan-500 p-4">
+    <div className="flex items-center justify-center min-h-screen bg-white p-4 ">
       <form
         onSubmit={handleSubmit}
-        className="bg-white w-full max-w-lg p-6 sm:p-8 rounded-2xl shadow-lg space-y-5"
+        className="bg-cyan-500 w-full shadow-2xl max-w-lg p-6 sm:p-8 rounded-2xl shadow-lg space-y-5"
       >
-        <h1 className="text-2xl font-bold text-center text-gray-800">
-          Insertion Utilisateur
-        </h1>
+        <h1 className="text-2xl font-bold text-center text-white">CREATION</h1>
 
         {/* Messages */}
         {error && <p className="text-red-500 text-center">{error}</p>}
+       
         {success && (
-          <p className="text-green-600 font-semibold text-center">
-            Vous êtes bien inscrit, vous pouvez vous authentifier
-          </p>
+          <p className=" font-semibold text-center bg-white rounded shadow-xl border border-white text-blue-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 ">
+          Vous êtes bien inscrit, vous pouvez vous authentifier
+        </p>
         )}
 
         <div className="space-y-4">
           {/* Nom */}
           <div className="grid grid-cols-1 md:grid-cols-4 items-center gap-2">
-            <label htmlFor="nom" className="font-medium">
-              Nom
+            <label
+              htmlFor="nom"
+              className="font-medium"
+              style={{ color: "#ffff00" }}
+            >
+              NOM :
             </label>
             <input
               id="nom"
@@ -91,8 +94,12 @@ export function Consomateur() {
 
           {/* Prénom */}
           <div className="grid grid-cols-1 md:grid-cols-4 items-center gap-2">
-            <label htmlFor="prenom" className="font-medium">
-              Prénom
+            <label
+              htmlFor="prenom"
+              className="font-medium"
+              style={{ color: "#ffff00" }}
+            >
+              PRENOM :
             </label>
             <input
               id="prenom"
@@ -108,8 +115,12 @@ export function Consomateur() {
 
           {/* Mot de passe */}
           <div className="grid grid-cols-1 md:grid-cols-4 items-center gap-2">
-            <label htmlFor="motDePasse" className="font-medium">
-              Mot de passe
+            <label
+              htmlFor="motDePasse"
+              className="font-medium"
+              style={{ color: "#ffff00" }}
+            >
+              MOT DE PASSE :
             </label>
             <input
               id="motDePasse"
@@ -129,12 +140,16 @@ export function Consomateur() {
 
           {/* Contact */}
           <div className="grid grid-cols-1 md:grid-cols-4 items-center gap-2">
-            <label htmlFor="contact" className="font-medium">
-              Contact
+            <label
+              htmlFor="contact"
+              className="font-medium"
+              style={{ color: "#ffff00" }}
+            >
+              CONTACTE :
             </label>
             <input
               id="contact"
-              type="text"
+              type="tel"
               name="contact"
               required
               value={formData.contact}
@@ -146,8 +161,12 @@ export function Consomateur() {
 
           {/* Email */}
           <div className="grid grid-cols-1 md:grid-cols-4 items-center gap-2">
-            <label htmlFor="email" className="font-medium">
-              Email
+            <label
+              htmlFor="email"
+              className="font-medium"
+              style={{ color: "#ffff00" }}
+            >
+              EMAIL :
             </label>
             <input
               id="email"
@@ -164,8 +183,12 @@ export function Consomateur() {
 
           {/* Photo de profil */}
           <div className="grid grid-cols-1 md:grid-cols-4 items-center gap-2">
-            <label htmlFor="profil" className="font-medium">
-              Photo de profil
+            <label
+              htmlFor="profil"
+              className="font-medium "
+              style={{ color: "#ffff00" }}
+            >
+              PHOTO :
             </label>
             <input
               id="profil"
@@ -173,8 +196,8 @@ export function Consomateur() {
               name="profil"
               required
               onChange={handleChange}
-              className="md:col-span-3 w-full px-4 py-2 border border-gray-300 rounded-lg 
-                         focus:outline-none focus:ring-2 focus:ring-cyan-400"
+              className="md:col-span-3 w-full px-4 py-2 border border-white rounded-lg 
+                         focus:outline-none focus:ring-2 focus:ring-white bg-white"
             />
           </div>
 
@@ -182,8 +205,12 @@ export function Consomateur() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Sexe */}
             <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-2">
-              <label htmlFor="sexe" className="font-medium">
-                Sexe
+              <label
+                htmlFor="sexe"
+                className="font-medium"
+                style={{ color: "#ffff00" }}
+              >
+                SEXE :
               </label>
               <select
                 id="sexe"
@@ -202,8 +229,12 @@ export function Consomateur() {
 
             {/* Groupe */}
             <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-2">
-              <label htmlFor="groupe" className="font-medium">
-                Groupe
+              <label
+                htmlFor="groupe"
+                className="font-medium"
+                style={{ color: "#ffff00" }}
+              >
+                GROUPE:
               </label>
               <select
                 id="groupe"
@@ -216,29 +247,32 @@ export function Consomateur() {
               >
                 <option value="">Sélectionnez</option>
                 <option value="Consommateur">Consommateur</option>
-                <option value="fournisseur">fournisseur</option>
-                <option value="entité">entité</option>
+                {/* <option value="fournisseur">fournisseur</option>
+                <option value="entité">entité</option> */}
               </select>
             </div>
           </div>
         </div>
 
         {/* Boutons */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-3 mt-6">
+        <div
+          className="flex flex-col sm:flex-row justify-center items-center gap-3 pb-2"
+          style={{ marginTop: "8%" }}
+        >
           <button
             type="submit"
-            className="w-full sm:w-auto bg-cyan-500 text-white py-2 px-6 rounded-lg 
+            className="w-full sm:w-auto px-[10%] bg-blue-600 text-white py-2 px-6 rounded-lg 
                        hover:bg-cyan-600 transition"
           >
-            Créer
+            CREER
           </button>
           <button
             type="button"
             onClick={() => navigate("/")}
-            className="w-full sm:w-auto bg-red-500 text-white py-2 px-6 rounded-lg 
+            className="w-full sm:w-auto px-[8%] bg-red-500 text-white py-2 px-6 rounded-lg 
                        hover:bg-gray-400 transition"
           >
-            Annuler
+            ANNULER
           </button>
         </div>
       </form>

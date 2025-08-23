@@ -17,6 +17,9 @@ import { Transaction } from "./componets/affichage/pageConsommateur/transaction"
 import { Reception } from "./componets/affichage/pageConsommateur/reception";
 import { AcceuilUtilisateur } from "./componets/affichage/utilisateur";
 import Login from "./Login";
+import { NavbarConsommateur } from "./componets/affichage/pageConsommateur/navbar";
+import { NavbarFournisseur } from "./componets/fournisseur/navbar";
+import { IndexF } from "./componets/fournisseur/affichage/acceuil";
 
 function UsersPage() {
   const [users, setUsers] = useState([]);
@@ -44,6 +47,18 @@ function UsersPage() {
 
 const router = createBrowserRouter([
   {
+    path: "/acceuilF",
+    element: (
+      <ProtectedRoute>
+        <div>
+          <IndexF />
+        </div>
+      </ProtectedRoute>
+    ),
+  },
+
+  ///fournisseur
+  {
     path: "/",
     element: (
       <div>
@@ -65,6 +80,7 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <div>
+          <NavbarConsommateur />
           <IndexConsommateur />
         </div>
       </ProtectedRoute>
@@ -75,6 +91,7 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <div>
+          <NavbarConsommateur />
           <Discution />
         </div>
       </ProtectedRoute>
@@ -85,6 +102,7 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <div>
+          <NavbarConsommateur />
           <AcceuilConsommater />
         </div>
       </ProtectedRoute>
@@ -95,6 +113,7 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <div>
+          <NavbarConsommateur />
           <Consomateur />
         </div>
       </ProtectedRoute>
@@ -106,6 +125,7 @@ const router = createBrowserRouter([
       <ProtectedRoute>
         <div>
           {/* <Navbar /> */}
+          <NavbarConsommateur />
           <AcceuilConsommater />
         </div>
       </ProtectedRoute>
@@ -128,6 +148,7 @@ const router = createBrowserRouter([
       <ProtectedRoute>
         <div>
           {/* <Navbar /> */}
+          <NavbarConsommateur />
           <Suivi_achat />
         </div>
       </ProtectedRoute>
@@ -138,6 +159,7 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <div>
+          <NavbarConsommateur />
           <Transaction />
         </div>
       </ProtectedRoute>
@@ -149,22 +171,24 @@ const router = createBrowserRouter([
       <ProtectedRoute>
         <div>
           {/* <Navbar /> */}
+          <NavbarConsommateur />
           <Reception />
         </div>
       </ProtectedRoute>
     ),
   },
-  {
-    path: "/utilisateur",
-    element: (
-      <ProtectedRoute>
-        <div>
-          {/* <Navbar /> */}
-          <AcceuilUtilisateur />
-        </div>
-      </ProtectedRoute>
-    ),
-  },
+  // {
+  //   path: "/utilisateur",
+  //   element: (
+  //     <ProtectedRoute>
+  //       <div>
+  //         {/* <Navbar /> */}
+  //         <NavbarConsommateur />
+  //         <AcceuilUtilisateur />
+  //       </div>
+  //     </ProtectedRoute>
+  //   ),
+  // },
   AcceuilUtilisateur,
 ]);
 

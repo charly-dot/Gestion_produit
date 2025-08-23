@@ -1,62 +1,79 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Box from "@mui/material/Box";
+import { DataGrid } from "@mui/x-data-grid";
 
 export function Suivi_achat() {
   const navigate = useNavigate();
   const [show, setShow] = useState("facture"); // "facture" ou "commande"
   const [showDocs, setShowDocs] = useState(false);
   const [croissant, setCroissant] = useState(false);
+  const columns = [
+    { field: "id", headerName: "N°", width: 90 },
+    { field: "REFERENCE", headerName: "REFERENCE", width: 300 },
+    { field: "date", headerName: "DATE", width: 250 },
+    { field: "fournisseur", headerName: "FOURNISSEUR", width: 300 },
+    { field: "ETAT", headerName: "ETAT", width: 300 },
+  ];
+
+  const rows = [
+    {
+      id: 1,
+      REFERENCE: "000000",
+      date: "2025-08-18",
+      fournisseur: "F1",
+      ETAT: "etat 2",
+    },
+    {
+      id: 2,
+      REFERENCE: "000000",
+      date: "2025-07-18",
+      fournisseur: "F1",
+      ETAT: "etat 2",
+    },
+    {
+      id: 3,
+      REFERENCE: "000000",
+      date: "2024-04-18",
+      fournisseur: "F1",
+      ETAT: "etat 2",
+    },
+  ];
 
   return (
-    <div className="p-6 bg-cyan-500 min-h-screen">
+    <div className="p-6 bg-gray-100 min-h-screen">
       {/* Header */}
-      <div className="bg-blue-600 flex justify-between items-center p-6 shadow-lg rounded-lg mb-6">
-        <input
-          type="text"
-          placeholder="Rechercher un produit..."
-          className="px-4 py-2 rounded-lg border border-white focus:outline-none focus:ring-2 focus:ring-blue-300"
-        />
-        <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            navigate("/AcceuilConso");
-          }}
-        >
-          <img
-            src="/image/telephone.jfif"
-            alt="Profil"
-            className="w-16 h-16 object-cover rounded-full border-4 border-white shadow-md"
-          />
-        </a>
-      </div>
 
       {/* Navbar centrée */}
-      <div className="flex justify-center text-lg font-bold mb-6">
-        <button
+      <div className="flex justify-center text-lg font-bold mb-6 gap-6">
+        <a
+          href=""
+          className="ttext-blue-500 py-4 px-10 text-blue-500  hover:border  hover:border-gray-100  hover:border-b-blue-500"
           onClick={() => navigate("/liste_super_utilisateur")}
-          className="border-2 border-gray-800 text-black/80 bg-white py-4 px-10 rounded-l-lg hover:text-cyan-500"
         >
           Utilisateurs
-        </button>
-        <button
+        </a>
+        <a
+          href=""
+          className="border  border-gray-100  border-b-blue-500 text-blue-500 py-4 px-10"
           onClick={() => navigate("/suivit")}
-          className="text-black/80 border-2 border-gray-800 text-cyan-600 bg-white py-4 px-10 hover:text-cyan-500"
         >
           Suivi achat
-        </button>
-        <button
+        </a>
+        <a
+          href=""
+          className="text-blue-500 py-4 px-10   hover:border  hover:border-gray-100  hover:border-b-blue-500"
           onClick={() => navigate("/Transaction")}
-          className="text-black/80 border-2 border-gray-800 bg-white py-4 px-10 hover:text-cyan-500"
         >
           Transaction
-        </button>
-        <button
+        </a>
+        <a
+          href=""
+          className="  py-4 px-10 text-blue-500  hover:border  hover:border-gray-100  hover:border-b-blue-500"
           onClick={() => navigate("/réception")}
-          className="text-black/80 border-2 border-gray-800 bg-white py-4 px-10 hover:text-cyan-500 rounded-r-lg"
         >
           Boîte de réception
-        </button>
+        </a>
       </div>
 
       {/* Select */}
@@ -72,106 +89,77 @@ export function Suivi_achat() {
       </div>
 
       {/* Tableau */}
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+      <div className=" rounded-xl shadow-lg overflow-hidden">
         {show === "facture" ? (
           <>
-            <h1 className="text-center text-2xl font-bold">LISTE FACTURE</h1>
-            <table className="w-full text-left border-collapse table_facture">
-              <thead className="bg-cyan-100 text-gray-700 uppercase text-sm">
-                <tr>
-                  <th className="py-3 px-4 border-b">Référence</th>
-                  <th className="py-3 px-4 border-b">Date</th>
-                  <th className="py-3 px-4 border-b">Fournisseur</th>
-                  <th className="py-3 px-4 border-b">État</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                <tr
-                  className="hover:bg-cyan-50 transition-colors cursor-pointer"
-                  onClick={() => setShowDocs(!showDocs)}
-                >
-                  <td className="py-3 px-4 font-medium">FCT001</td>
-                  <td className="py-3 px-4">12/08/2025</td>
-                  <td className="py-3 px-4">Fournisseur A</td>
-                  <td className="py-3 px-4 text-green-600 font-semibold">
-                    Payée
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            {croissant ? (
-              <button
-                className="px-8 py-2 font-semibold mt-6 border bg-cyan-100 text-gray-700 uppercase border-gray-300 rounded-xl shadow-sm m-3"
-                onClick={() => setCroissant(false)}
-              >
-                Croissante
-              </button>
-            ) : (
-              <button
-                className="px-8 py-2 font-semibold mt-6 border bg-cyan-100 text-gray-700 uppercase border-gray-300 rounded-xl shadow-sm m-3"
-                onClick={() => setCroissant(true)}
-              >
-                Décroissante
-              </button>
-            )}
+            <h1 className="mb-6 text-3xl font-bold text-blue-500">
+              LISTE FACTURE
+            </h1>
+            <Box
+              sx={{
+                height: 400,
+                width: "100%",
+                "& .MuiDataGrid-columnHeaders": {
+                  backgroundColor: "#cffafe", // bg-cyan-100 en Tailwind
+                },
+              }}
+            >
+              <DataGrid
+                rows={rows}
+                columns={columns}
+                pageSize={5}
+                rowsPerPageOptions={[5, 10, 20]}
+                checkboxSelection
+                disableRowSelectionOnClick
+                onRowClick={(params) => {
+                  setShowDocs(true); // 👉 Affiche la section DOCUMENTS
+                  console.log("Row clicked:", params.row); // Tu peux voir la ligne cliquée
+                }}
+              />
+            </Box>
           </>
         ) : (
           <>
-            <h1 className="text-center text-2xl font-bold">LISTE COMMANDE</h1>
-            <table className="w-full text-left border-collapse table_commande">
-              <thead className="bg-cyan-100 text-gray-700 uppercase text-sm">
-                <tr>
-                  <th className="py-3 px-4 border-b">Référence</th>
-                  <th className="py-3 px-4 border-b">Date</th>
-                  <th className="py-3 px-4 border-b">Fournisseur</th>
-                  <th className="py-3 px-4 border-b">État</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                <tr
-                  className="hover:bg-cyan-50 transition-colors cursor-pointer"
-                  onClick={() => setShowDocs(!showDocs)}
-                >
-                  <td className="py-3 px-4 font-medium">CMD001</td>
-                  <td className="py-3 px-4">10/08/2025</td>
-                  <td className="py-3 px-4">Fournisseur B</td>
-                  <td className="py-3 px-4 text-yellow-600 font-semibold">
-                    En attente
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            {croissant ? (
-              <button
-                className="px-8 py-2 font-semibold mt-6 border bg-cyan-100 text-gray-700 uppercase border-gray-300 rounded-xl shadow-sm m-3"
-                onClick={() => setCroissant(false)}
-              >
-                Croissante
-              </button>
-            ) : (
-              <button
-                className="px-8 py-2 font-semibold mt-6 border bg-cyan-100 text-gray-700 uppercase border-gray-300 rounded-xl shadow-sm m-3"
-                onClick={() => setCroissant(true)}
-              >
-                Décroissante
-              </button>
-            )}
+            <h1 className="mb-6 text-3xl font-bold text-blue-500">
+              LISTE COMMANDE
+            </h1>
+            <Box sx={{ height: "70vh", width: "100%" }}>
+              <DataGrid
+                rows={rows}
+                columns={columns}
+                pageSize={5}
+                rowsPerPageOptions={[5, 10, 20]}
+                checkboxSelection
+                disableRowSelectionOnClick
+                onRowClick={(params) => {
+                  setShowDocs(true); // 👉 Affiche la section DOCUMENTS
+                  console.log("Row clicked:", params.row); // Tu peux voir la ligne cliquée
+                }}
+              />
+            </Box>
           </>
         )}
       </div>
 
       {/* Section DOCUMENTS */}
       {showDocs && (
-        <div className="mt-6 bg-cyan-300 p-6 rounded-lg shadow-lg w-[40%]">
-          <h3 className="text-white text-2xl font-semibold mb-4">DOCUMENTS</h3>
-          <div className="grid grid-cols-3 gap-4">
-            <button className="bg-white text-black py-2 px-4 rounded-lg hover:bg-gray-200 transition">
-              Commande
-            </button>
-            <button className="bg-white text-black py-2 px-4 rounded-lg hover:bg-gray-200 transition">
-              Facture
-            </button>
-            <button className="bg-white text-black py-2 px-4 rounded-lg hover:bg-gray-200 transition">
+        <div className="mt-6 bg-white p-6 rounded-lg shadow-2xl w-[40%]">
+          <h3 className="text-2xl text-gray-700 font-semibold mb-4">
+            DOCUMENTS {show === "facture" ? "FACTURE" : "COMMANDE"}
+          </h3>
+
+          <div className="grid grid-cols-2 gap-4">
+            {show === "commande" && (
+              <button className="bg-blue-500 text-white py-2 px-4 rounded-lg shadow hover:bg-blue-600 transition">
+                Commande
+              </button>
+            )}
+            {show === "facture" && (
+              <button className="bg-blue-500 text-white py-2 px-4 rounded-lg shadow hover:bg-blue-600 transition">
+                Facture
+              </button>
+            )}
+            <button className="bg-blue-500 text-white py-2 px-4 rounded-lg shadow hover:bg-blue-600 transition">
               Livraison
             </button>
           </div>
@@ -180,7 +168,7 @@ export function Suivi_achat() {
 
       {/* Bouton afficher */}
       <div className="mb-6 flex justify-center ">
-        <button className="px-8 py-2 font-semibold mt-6 border bg-cyan-100 text-gray-700 uppercase border-gray-300 rounded-xl shadow-sm ">
+        <button className="px-8 py-2 font-semibold mt-6 border bg-blue-400 text-gray-700 uppercase border-gray-300 rounded-xl shadow-sm ">
           Afficher
         </button>
       </div>
