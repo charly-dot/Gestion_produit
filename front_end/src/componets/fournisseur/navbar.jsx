@@ -4,7 +4,7 @@ import { AuthContext } from "./../../AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 
-export function NavbarFournisseur() {
+export function NavbarFournisseur({ value }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
@@ -47,6 +47,16 @@ export function NavbarFournisseur() {
               </NavLink>
             ))}
           </div>
+          <NavLink
+            to="/tiers"
+            className={`px-3 py-2 rounded-md text-sm font-medium ${
+              value === "tiers"
+                ? "underline text-yellow-500 px-3 py-2 rounded-md text-sm font-medium  hover:bg-gray-100 hover:text-red-600"
+                : "text-black"
+            }`}
+          >
+            TIERS
+          </NavLink>
 
           {/* Utilisateur Desktop */}
           <div className="hidden sm:flex items-center space-x-4">

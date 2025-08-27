@@ -2,10 +2,101 @@
 
 use App\Models\Categorie;
 use App\Models\Groupe;
+use App\Models\Tier;
 use App\Models\Utilisateur;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+//// TIERS
+Route::get('/liste_TIERS', function () {
+    $tiers = \App\Models\Tier::all();
+
+    if ($tiers->isEmpty()) {
+        return response()->json(['message' => 'Aucun utilisateur trouvé'], 404);
+    }
+
+    return response()->json($tiers);
+});
+
+Route::post('/creationTiers', function (Request $request) {
+    try {
+        $Tiers = Tier::create([
+            'nomTier'    => $request->nomTier, // ⚠️ correspond à ton state
+            'zone'       => $request->zone,
+            'type'       => $request->type,
+            'motDePasse' => bcrypt($request->motDePasse), // ✅ bon champ
+            'email'      => $request->email,
+            'contact'    => $request->contact,
+            'nif'        => $request->nif,
+            'stat'       => $request->stat,
+            'rcs'        => $request->rcs,
+            'commercial' => $request->commercial, // ⚠️ pas "commerce"
+            'colonne'    => 'activer',
+            'colonnes'   => false,
+        ]);
+
+        return response()->json([
+            'message' => 'Tiers inséré avec succès',
+            'data'    => $Tiers
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'message' => 'Erreur lors de l’insertion',
+            'error'   => $e->getMessage()
+        ], 500);
+    }
+});
+
+// SUPPRESSION
+Route::delete('/supprimer_tier/{id}', function ($id) {
+    $tier = Tier::find($id);
+    if (!$tier) {
+        return response()->json(['message' => 'Tier non trouvé'], 404);
+    }
+
+    $tier->delete();
+    return response()->json(['message' => 'Tier supprimé avec succès ✅']);
+});
+
+// CHANGEMENT D’ÉTAT
+Route::patch('/changer_activation_tier/{id}', function ($id, Request $request) {
+    $tier = Tier::find($id);
+    if (!$tier) {
+        return response()->json(['message' => 'Tier non trouvé'], 404);
+    }
+
+    // Mettre à jour la colonne "colonne" qui sert pour l'état
+    $newEtat = $request->activation === "activer" ? "activer" : "desactiver";
+    $tier->colonne = $newEtat;
+    $tier->save();
+
+    return response()->json([
+        'message' => "Tier mis à jour : {$newEtat} ✅",
+        'activation' => $tier->colonne  // <-- renvoyer la bonne colonne
+    ]);
+});
+
+///Modification
+Route::put('/modifier_tier/{id}', function ($id, Request $request) {
+    $tier = Tier::find($id);
+    if (!$tier) return response()->json(['message' => 'Tier non trouvé'], 404);
+
+    $tier->nomTier    = $request->nomTier;
+    $tier->zone       = $request->zone;
+    $tier->type       = $request->type;
+    if ($request->motDePasse) $tier->motDePasse = bcrypt($request->motDePasse);
+    $tier->email      = $request->email;
+    $tier->contact    = $request->contact;
+    $tier->nif        = $request->nif;
+    $tier->stat       = $request->stat;
+    $tier->rcs        = $request->rcs;
+    $tier->commercial = $request->commercial;
+    $tier->save();
+
+    return response()->json($tier);
+});
 
 ///////// categorie
 Route::post('/creationCategorie', function (Request $request) {
@@ -81,7 +172,7 @@ Route::get('/liste_Groupe', function () {
 
 Route::post('/creationG', function (Request $request) {
     $user = Groupe::create([
-        'nomGroupe' => $request->nomGroupe, // ✅ correspond au front-end
+        'nomGroupe' => $request->nomGroupe,
         'etat'      => "activer",
         'type'      => $request->type,
         'colonne'   => false,
@@ -150,7 +241,7 @@ Route::middleware('auth:sanctum')->get('/me', function (Request $request) {
     return $request->user();
 });
 
-/// Utilisateur 
+/// Utilisateur
 
 Route::get('/liste_utilisateur/{id}', function ($id) {
     $user = Utilisateur::find($id);

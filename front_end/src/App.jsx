@@ -20,6 +20,7 @@ import Login from "./Login";
 import { NavbarConsommateur } from "./componets/affichage/pageConsommateur/navbar";
 import { NavbarFournisseur } from "./componets/fournisseur/navbar";
 import { IndexF } from "./componets/fournisseur/affichage/acceuil";
+import { Tiers } from "./componets/tiers/tiers";
 
 function UsersPage() {
   const [users, setUsers] = useState([]);
@@ -47,10 +48,22 @@ function UsersPage() {
 
 const router = createBrowserRouter([
   {
+    path: "/tiers",
+    element: (
+      <ProtectedRoute>
+        <div>
+          <NavbarFournisseur value={"tiers"} />
+          <Tiers />
+        </div>
+      </ProtectedRoute>
+    ),
+  },
+  {
     path: "/acceuilF",
     element: (
       <ProtectedRoute>
         <div>
+          <NavbarFournisseur value={" "} />
           <IndexF />
         </div>
       </ProtectedRoute>
