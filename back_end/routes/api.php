@@ -23,19 +23,22 @@ Route::get('/liste_TIERS', function () {
 Route::post('/creationTiers', function (Request $request) {
     try {
         $Tiers = Tier::create([
-            'nomTier'    => $request->nomTier, // ⚠️ correspond à ton state
+            'nomTier'    => $request->nomTier,
             'zone'       => $request->zone,
             'type'       => $request->type,
-            'motDePasse' => bcrypt($request->motDePasse), // ✅ bon champ
+            'motDePasse' => $request->type === "Livreur" && !empty($request->motDePasse)
+                ? $request->motDePasse
+                : " ",
             'email'      => $request->email,
             'contact'    => $request->contact,
             'nif'        => $request->nif,
             'stat'       => $request->stat,
             'rcs'        => $request->rcs,
-            'commercial' => $request->commercial, // ⚠️ pas "commerce"
+            'commercial' => $request->commercial,
             'colonne'    => 'activer',
             'colonnes'   => false,
         ]);
+
 
         return response()->json([
             'message' => 'Tiers inséré avec succès',

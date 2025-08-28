@@ -55,7 +55,7 @@ export function NavbarFournisseur({ value }) {
                 : "text-black"
             }`}
           >
-            TIERS
+            TIERS 
           </NavLink>
 
           {/* Utilisateur Desktop */}
